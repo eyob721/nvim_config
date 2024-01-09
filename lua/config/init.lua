@@ -10,6 +10,7 @@ The different set of configurations are loaded in this order
     1. Options
     2. Plugins
     3. Keymaps
+    4. Autocmds
 
 --]]
 
@@ -87,3 +88,6 @@ require("lazy").setup({
 
 -- [[ Keymaps ]] ------------------------------------------------------------
 require("config.keymaps")
+
+-- [[ Autocmds ]] -----------------------------------------------------------
+require("config.autocmds")
