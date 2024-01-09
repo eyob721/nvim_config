@@ -28,6 +28,10 @@ map("v", ">", ">gv")
 -- Lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
+-- Window Management
+map("n", "<leader>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
+map("n", "<leader>-", ":split<CR>", { silent = true, desc = "Split window horizontally" })
+
 -- Toggle Options
 
 -- Load my utils
