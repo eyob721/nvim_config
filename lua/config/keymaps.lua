@@ -32,6 +32,13 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map("n", "<leader>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
 map("n", "<leader>-", ":split<CR>", { silent = true, desc = "Split window horizontally" })
 
+-- Telescope keymaps
+local builtin = require('telescope.builtin')
+map('n', '<leader>ff', builtin.find_files, {desc = "Find files"})
+map('n', '<leader>fg', builtin.live_grep, {desc = "Grep files"})
+map('n', '<leader>fb', builtin.buffers, {desc = "Find buffers" })
+map('n', '<leader>fh', builtin.help_tags, {desc = "Find help tags"})
+
 -- Toggle Options
 
 -- Load my utils
