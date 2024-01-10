@@ -84,6 +84,9 @@ return {
   opts = function()
     -- Set up nvim-cmp
     local cmp = require("cmp")
+    local luasnip = require("luasnip")
+    require("luasnip.loaders.from_vscode").lazy_load()
+    luasnip.config.setup()
 
     -- Highlight for ghost texts
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -99,7 +102,7 @@ return {
       -- REQUIRED - you must specify a snippet engine
       snippet = {
         expand = function(args)
-          require("luasnip").lsp_expand(args.body)
+          luasnip.lsp_expand(args.body)
         end,
       },
 
@@ -144,8 +147,6 @@ return {
             -- that way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
           else
             fallback()
           end
@@ -193,10 +194,10 @@ return {
     }
   end,
 
-  -- config = function(_, opts)
-  --   for _, source in ipairs(opts.sources) do
-  --     source.group_index = source.group_index or 1
-  --   end
-  --   require("cmp").setup(opts)
-  -- end,
+  config = function(_, opts)
+    for _, source in ipairs(opts.sources) do
+      source.group_index = source.group_index or 1
+    end
+    require("cmp").setup(opts)
+  end,
 }
