@@ -45,6 +45,7 @@ require("lazy").setup({
 		-- Tell lazy from where to load your plugins, and it will load all the modules in that directory
 		-- My plugins are found in 'plugins', which is the 'lua/plugins/' directory
 		{ import = "plugins" },
+		{ import = "plugins.lsp" },
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
