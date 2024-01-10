@@ -63,7 +63,7 @@ return {
 
   -- source repos
   dependencies = {
-    -- "hrsh7th/cmp-nvim-lsp",  -- lsp completions
+    "hrsh7th/cmp-nvim-lsp",     -- lsp completions
     "saadparwaiz1/cmp_luasnip", -- snippets
     "hrsh7th/cmp-buffer",       -- buffer completions
     "hrsh7th/cmp-path",         -- path completions
@@ -105,7 +105,7 @@ return {
 
       -- Source names
       sources = cmp.config.sources({
-        -- { name = "nvim_lsp" },
+        { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "nvim_lua" },
         { name = "buffer" },
