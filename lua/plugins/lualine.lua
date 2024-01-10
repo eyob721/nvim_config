@@ -22,7 +22,7 @@ local function char_and_line_count()
 
   -- I also found this option, but this doesn't work for visual-block mode
   -- local is_visual_mode = vim.fn.mode():find("[vV]")
-  
+
   if is_visual_mode then
     return tostring(lines) .. "x" .. tostring(chars)
   else
@@ -56,6 +56,9 @@ return {
         icons_enabled = true,
         theme = 'auto',
         globalstatus = false,
+        disabled_filetypes = {
+          statusline = { "dashboard", "alpha", "starter", "neo-tree" }
+        },
         always_divide_middle = true,
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
@@ -69,10 +72,13 @@ return {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diagnostics'},
         -- TODO: Remember to add diagnostic icons later on
-        lualine_c = {'filename', 'filetype'},
+        lualine_c = {
+          {'filetype', icon_only = true},
+          {'filename'}
+        },
         lualine_x = {char_and_line_count, indentation, 'fileformat'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_y = {'location'},
+        lualine_z = {'progress'}
       },
       -- tabline = {
       --   lualine_a = {'buffers'},
