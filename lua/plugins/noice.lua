@@ -12,6 +12,7 @@ return {
             config = function ()
                 require("notify").setup({
                     background_colour = "#161616",
+                    timeout = 500, -- deafult: 5000
                 })
             end,
         },
