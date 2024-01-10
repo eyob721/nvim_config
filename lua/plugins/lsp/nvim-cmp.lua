@@ -67,7 +67,6 @@ return {
     "saadparwaiz1/cmp_luasnip", -- snippets
     "hrsh7th/cmp-buffer",       -- buffer completions
     "hrsh7th/cmp-path",         -- path completions
-    "hrsh7th/cmp-cmdline",      -- command line completions
     "hrsh7th/cmp-emoji",        -- markdown emojis
     "hrsh7th/cmp-nvim-lua",     -- neovim's lua api
     "paopaol/cmp-doxygen",      -- doxygen completions
@@ -77,6 +76,7 @@ return {
         "rafamadriz/friendly-snippets",
       },
     },
+    -- "hrsh7th/cmp-cmdline",       -- command line completions [NOT GOOD]
     -- "garyhurtz/cmp_bulma.nvim",  -- css completions
     -- "Jezda1337/nvim-html-css",   -- css intellisense for HTML
   },
@@ -112,7 +112,7 @@ return {
         { name = "path" },
         { name = "doxygen" },
         { name = "emoji" },
-        { name = "cmdline" },
+        -- { name = "cmdline" },
       }),
 
       -- My mappings
