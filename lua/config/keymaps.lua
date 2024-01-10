@@ -40,8 +40,13 @@ map('n', '<leader>fb', builtin.buffers, {desc = "Find buffers" })
 map('n', '<leader>fh', builtin.help_tags, {desc = "Find help tags"})
 map('n', '<leader>fk', builtin.keymaps, {desc = "Find keymaps"})
 
--- Toggle Options
+--[[ Toggle Options ]] -------------------------------------------------------
 -- Load toggle functions from utils
 local toggle = require('utils.toggle')
+
+-- Spelling and Word wrap
 map("n", "<leader>us", toggle.spell, { desc = "Toggle Spelling" })
 map("n", "<leader>uw", toggle.wrap, { desc = "Toggle Word Wrap" })
+
+-- Git signs
+map('n', '<leader>ub', toggle.git_blame, { desc = 'Toggle Git line blame' })
