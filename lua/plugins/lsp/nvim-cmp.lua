@@ -67,11 +67,18 @@ return {
     "saadparwaiz1/cmp_luasnip", -- snippets
     "hrsh7th/cmp-buffer",       -- buffer completions
     "hrsh7th/cmp-path",         -- path completions
+    "hrsh7th/cmp-cmdline",      -- command line completions
     "hrsh7th/cmp-emoji",        -- markdown emojis
     "hrsh7th/cmp-nvim-lua",     -- neovim's lua api
     "paopaol/cmp-doxygen",      -- doxygen completions
-    -- "garyhurtz/cmp_bulma.nvim", -- css completions
-    -- "Jezda1337/nvim-html-css", -- css intellisense for HTML
+    {
+      "L3MON4D3/LuaSnip",
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+      },
+    },
+    -- "garyhurtz/cmp_bulma.nvim",  -- css completions
+    -- "Jezda1337/nvim-html-css",   -- css intellisense for HTML
   },
 
   opts = function()
@@ -105,6 +112,7 @@ return {
         { name = "path" },
         { name = "doxygen" },
         { name = "emoji" },
+        { name = "cmdline" },
       }),
 
       -- My mappings
