@@ -10,33 +10,7 @@ NOTE: when adding sources
         2. then include the source name in the `sources` key
 -]]
 
-local kind_icons = {
-  Text = "",
-  Method = "m",
-  Function = "󰊕",
-  Constructor = "",
-  Field = "󰇽",
-  Variable = "󰂡",
-  Class = "󰠱",
-  Interface = "",
-  Module = "",
-  Property = "󰜢",
-  Unit = "",
-  Value = "󰎠",
-  Enum = "",
-  Keyword = "󰌋",
-  Snippet = "",
-  Color = "󰏘",
-  File = "󰈙",
-  Reference = "",
-  Folder = "󰉋",
-  EnumMember = "",
-  Constant = "󰏿",
-  Struct = "",
-  Event = "",
-  Operator = "󰆕",
-  TypeParameter = "󰅲",
-}
+local kind_icons = require("utils.icons").kind_icons
 
 local completion_opts = {
   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
