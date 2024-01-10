@@ -68,6 +68,7 @@ return {
           winbar = 1000,
         }
       },
+      -- TODO: Remember to add macro recordings
       sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diagnostics'},
