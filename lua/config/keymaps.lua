@@ -41,12 +41,7 @@ map('n', '<leader>fh', builtin.help_tags, {desc = "Find help tags"})
 map('n', '<leader>fk', builtin.keymaps, {desc = "Find keymaps"})
 
 -- Toggle Options
-
--- Load my utils
--- local util = require('utils.toggle')
-
--- map("n", "<leader>us", util.spell(), { desc = "Toggle Spelling" })
--- map("n", "<leader>uw", util.wrap(), { desc = "Toggle Word Wrap" })
-
--- local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
--- map("n", "<leader>uc", function() toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+-- Load toggle functions from utils
+local toggle = require('utils.toggle')
+map("n", "<leader>us", toggle.spell, { desc = "Toggle Spelling" })
+map("n", "<leader>uw", toggle.wrap, { desc = "Toggle Word Wrap" })
