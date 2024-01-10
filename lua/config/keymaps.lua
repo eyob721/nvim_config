@@ -50,3 +50,6 @@ map("n", "<leader>uw", toggle.wrap, { desc = "Toggle Word Wrap" })
 
 -- Git signs
 map('n', '<leader>ub', toggle.git_blame, { desc = 'Toggle Git line blame' })
+
+-- Indent scope
+map('n', '<leader>ui', toggle.indent_scope, { desc = 'Toggle indent scope' })

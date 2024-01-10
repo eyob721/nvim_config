@@ -28,20 +28,4 @@ return {
       end,
     })
   end,
-  keys = {
-    {
-      "<leader>ui",
-      function()
-        local lazy_util = require("lazy.core.util")
-        vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
-        if vim.g.miniindentscope_disable then
-          lazy_util.warn("Disabled indent scope", { title = "Option" })
-        else
-          lazy_util.info("Enabled indent scope", { title = "Option" })
-        end
-      end,
-      desc = "Toggle indent scope",
-    },
-  },
-  
 }

@@ -19,6 +19,15 @@ function M.wrap()
   end
 end
 
+function M.indent_scope()
+  vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
+  if vim.g.miniindentscope_disable then
+    lazy_util.warn("Disabled indent scope", { title = "Option" })
+  else
+    lazy_util.info("Enabled indent scope", { title = "Option" })
+  end
+end
+
 function M.git_blame()
   local gs = package.loaded.gitsigns
 
