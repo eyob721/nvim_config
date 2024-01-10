@@ -10,6 +10,33 @@ local function indentation ()
   end
 end
 
+-- A function to show selected char and line count
+local function char_and_line_count()
+  local ln_beg = vim.fn.line("v")
+  local ln_end = vim.fn.line(".")
+  local lines = ln_beg <= ln_end and ln_end - ln_beg + 1 or ln_beg - ln_end + 1
+  local chars = vim.fn.wordcount().visual_chars
+
+  -- To check if it is in visual mode use this, which works for all visual modes
+  local is_visual_mode = chars ~= nil
+
+  -- I also found this option, but this doesn't work for visual-block mode
+  -- local is_visual_mode = vim.fn.mode():find("[vV]")
+  
+  if is_visual_mode then
+    return tostring(lines) .. "x" .. tostring(chars)
+  else
+    return ""
+  end
+end
+
+local signs = {
+  Error = "",
+  Warn = "󰳦",
+  Hint = "",
+  Info = "",
+}
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -27,7 +54,7 @@ return {
     return {
       options = {
         icons_enabled = true,
-        theme = 'catppuccin',
+        theme = 'auto',
         globalstatus = false,
         always_divide_middle = true,
         component_separators = { left = '', right = ''},
@@ -40,10 +67,10 @@ return {
       },
       sections = {
         lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        -- TODO: Remeber diagnostics icons later on
-        lualine_c = {'filename'},
-        lualine_x = {'selectioncount', indentation, 'fileformat', 'filetype'},
+        lualine_b = {'branch', 'diagnostics'},
+        -- TODO: Remember to add diagnostic icons later on
+        lualine_c = {'filename', 'filetype'},
+        lualine_x = {char_and_line_count, indentation, 'fileformat'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },
