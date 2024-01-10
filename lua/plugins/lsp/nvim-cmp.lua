@@ -69,6 +69,7 @@ return {
     "hrsh7th/cmp-path",         -- path completions
     "hrsh7th/cmp-emoji",        -- markdown emojis
     "hrsh7th/cmp-nvim-lua",     -- neovim's lua api
+    "paopaol/cmp-doxygen",      -- doxygen completions
     -- "garyhurtz/cmp_bulma.nvim", -- css completions
     -- "Jezda1337/nvim-html-css", -- css intellisense for HTML
   },
@@ -99,10 +100,11 @@ return {
       sources = cmp.config.sources({
         -- { name = "nvim_lsp" },
         { name = "luasnip" },
+        { name = "nvim_lua" },
         { name = "buffer" },
         { name = "path" },
+        { name = "doxygen" },
         { name = "emoji" },
-        { name = "nvim_lua" },
       }),
 
       -- My mappings
@@ -161,7 +163,6 @@ return {
             luasnip = "[Snippet]",
             buffer = "[Buffer]",
             path = "[Path]",
-            emoji = "[emoji]",
             nvim_lua = "[Lua]",
           })[entry.source.name]
           return item
