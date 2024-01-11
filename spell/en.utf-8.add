@@ -30,3 +30,5 @@ utils
 #vim
 neovim
 LSP
+LazyVim
+papi721
