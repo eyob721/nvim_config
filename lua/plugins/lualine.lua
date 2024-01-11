@@ -1,5 +1,5 @@
 -- A function to show indentation
-local function indentation ()
+local function indentation()
   local expandtab = vim.api.nvim_buf_get_option(0, "expandtab")
   local tabstop = vim.api.nvim_buf_get_option(0, "tabstop")
 
@@ -38,8 +38,8 @@ local signs = {
 }
 
 return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   init = function()
     vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
@@ -50,36 +50,36 @@ return {
       vim.o.laststatus = 0
     end
   end,
-  opts = function ()
+  opts = function()
     return {
       options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = "auto",
         globalstatus = false,
         disabled_filetypes = {
-          statusline = { "dashboard", "alpha", "starter", "neo-tree" }
+          statusline = { "dashboard", "alpha", "starter", "neo-tree" },
         },
         always_divide_middle = true,
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         refresh = {
           statusline = 1000,
           tabline = 1000,
           winbar = 1000,
-        }
+        },
       },
       -- TODO: Remember to add macro recordings
       sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diagnostics'},
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diagnostics" },
         -- TODO: Remember to add diagnostic icons later on
         lualine_c = {
-          {'filetype', icon_only = true},
-          {'filename'}
+          { "filetype", icon_only = true },
+          { "filename" },
         },
-        lualine_x = {char_and_line_count, indentation, 'fileformat'},
-        lualine_y = {'location'},
-        lualine_z = {'progress'}
+        lualine_x = { char_and_line_count, indentation, "fileformat" },
+        lualine_y = { "location" },
+        lualine_z = { "progress" },
       },
       -- tabline = {
       --   lualine_a = {'buffers'},

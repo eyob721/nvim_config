@@ -1,4 +1,4 @@
 return {
-    "RRethy/vim-illuminate",
-    lazy = false,
+  "RRethy/vim-illuminate",
+  lazy = false,
 }

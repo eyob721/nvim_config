@@ -31,14 +31,14 @@ opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.sessionoptions = {
-    "buffers",
-    "curdir",
-    "tabpages",
-    "winsize",
-    "help",
-    "globals",
-    "skiprtp",
-    "folds",
+  "buffers",
+  "curdir",
+  "tabpages",
+  "winsize",
+  "help",
+  "globals",
+  "skiprtp",
+  "folds",
 }
 opt.undofile = true
 opt.undolevels = 10000

@@ -25,7 +25,7 @@ return {
     },
   },
   config = function(_, opts)
-    -- NOTE: Mason installing packages
+    -- NOTE: To make sure packages are installed
     require("mason").setup(opts)
     local mr = require("mason-registry")
     mr:on("package:install:success", function()

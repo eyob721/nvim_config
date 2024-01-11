@@ -37,13 +37,13 @@ return {
 
   -- source repos
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",     -- lsp completions
+    "hrsh7th/cmp-nvim-lsp", -- lsp completions
     "saadparwaiz1/cmp_luasnip", -- snippets
-    "hrsh7th/cmp-buffer",       -- buffer completions
-    "hrsh7th/cmp-path",         -- path completions
-    "hrsh7th/cmp-emoji",        -- markdown emojis
-    "hrsh7th/cmp-nvim-lua",     -- neovim's lua api
-    "paopaol/cmp-doxygen",      -- doxygen completions
+    "hrsh7th/cmp-buffer", -- buffer completions
+    "hrsh7th/cmp-path", -- path completions
+    "hrsh7th/cmp-emoji", -- markdown emojis
+    "hrsh7th/cmp-nvim-lua", -- neovim's lua api
+    "paopaol/cmp-doxygen", -- doxygen completions
     {
       "L3MON4D3/LuaSnip",
       dependencies = {
@@ -92,14 +92,18 @@ return {
 
       -- My mappings
       mapping = cmp.mapping.preset.insert({
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-j>"] = cmp.mapping.select_next_item({
+          behavior = cmp.SelectBehavior.Insert,
+        }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({
+          behavior = cmp.SelectBehavior.Insert,
+        }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ---@diagnostic disable-next-line: missing-parameter
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<S-CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           -- Accept currently selected item.

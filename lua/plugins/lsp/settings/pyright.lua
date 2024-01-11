@@ -6,8 +6,8 @@ return {
           reportUnboundVariable = "none",
           reportGeneralTypeIssues = "none",
         },
-        typeCheckingMode = "basic",   -- off, basic, strict
+        typeCheckingMode = "basic", -- off, basic, strict
       },
     },
-  }
+  },
 }
