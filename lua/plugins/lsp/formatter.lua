@@ -4,7 +4,7 @@ return {
     formatters_by_ft = {
       ["lua"] = { "stylua" },
       ["sh"] = { "shfmt" },
-      ["c"] = { "clang-format" },
+      ["c"] = { "clang_format" },
       ["python"] = { "isort", "black" },
       ["javascript"] = { "prettier" },
       ["javascriptreact"] = { "prettier" },
@@ -41,6 +41,7 @@ return {
       -- shfmt = {
       --   prepend_args = { "-i", "2", "-ci" },
       -- },
+      clang_format = {},
       black = {
         prepend_args = { "--line-length=80" },
       },
