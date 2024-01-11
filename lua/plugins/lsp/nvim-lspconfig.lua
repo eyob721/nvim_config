@@ -45,7 +45,10 @@ return {
               callSnippet = "Replace",
             },
             telemetry = { enable = false },
-            diagnostics = { disable = { "missing-fields" } },
+            diagnostics = {
+              globals = { "vim" },
+              disable = { "missing-fields" },
+            },
           },
         },
       },
