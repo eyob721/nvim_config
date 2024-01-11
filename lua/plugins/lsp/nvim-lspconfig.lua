@@ -62,52 +62,40 @@ return {
     local servers = {
       -- Add/Remove any LSPs that you want here. They will be automatically be installed.
       -- DO NOT add Linters or Formatters here, add those in the mason config
-      bashls = {},                                      -- Bash LSP
-      clangd = {},                                      -- C, C++ and Rust LSP
-      sqlls = {},                                       -- SQL LSP
-      marksman = {},                                    -- Markdown LSP
-      tsserver = {},                                    -- TypeScript & JavaScript LSP
-      html = { filetypes = { 'html', 'twig', 'hbs' } }, -- HTML LSP
-      lua_ls = {                                        -- Lua LSP
-        Lua = {
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-          diagnostics = { disable = { 'missing-fields' } },
-        },
-      },
-      pyright = { -- Python LSP
-        python = {
-          analysis = {
-            diagnosticSeverityOverrides = {
-              reportUnboundVariable = "none",
-              reportGeneralTypeIssues = "none",
-            },
-            typeCheckingMode = "basic",   -- off, basic, strict
-          },
-        },
-      },
+      "bashls",
+      "clangd",
+      "cssls",
+      "html",
+      "jsonls",
+      "lua_ls",
+      "marksman",
+      "pyright",
+      "sqlls",
+      "tailwindcss",
+      "tsserver",
+      "yamlls",
     }
 
-    -- Setup neovim lua configuration
-    require('neodev').setup()
-
     -- [[ 3. Define on_attach function ]] ------------------------------------
-    local on_attach = function(_, bufnr)
+    local function on_attach(_, bufnr)
       -- Define keymaps
       local nmap = function(keys, func, desc)
-        desc = desc and 'LSP: ' .. desc or ""
+        if desc then
+          desc = 'LSP: ' .. desc
+        end
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
       end
 
       -- Diagnostic keymaps
-      nmap('[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-      nmap(']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-      nmap('<leader>gm', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-      nmap('<leader>gl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+      nmap('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
+      nmap(']d', vim.diagnostic.goto_next, 'Go to next diagnostic message')
+      nmap('<leader>gm', vim.diagnostic.open_float, 'Open floating diagnostic message')
+      nmap('<leader>gl', vim.diagnostic.setloclist, 'Open diagnostics list')
 
       -- Code keymaps
       nmap('<leader>cr', vim.lsp.buf.rename, 'Code Rename')
       nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+
 
       -- Goto keymaps
       nmap('gd', require('telescope.builtin').lsp_definitions, 'Goto Definition')
@@ -133,6 +121,11 @@ return {
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
+
+      -- NOTE: for debugging your config, use this
+      -- local lazy_util = require("lazy.core.util")
+      -- lazy_util.info("Attached")
+
     end
 
     -- [[ 4. Define capabilities function ]] ---------------------------------
@@ -144,19 +137,27 @@ return {
     -- Ensure the servers above are installed
     local mason_lspconfig = require("mason-lspconfig")
     mason_lspconfig.setup {
-      ensure_installed = vim.tbl_keys(servers),
+      ensure_installed = servers,
     }
 
-    -- Activate the servers, using mason-lspconfig advanced feature
-    mason_lspconfig.setup_handlers {
-      function(server_name)
-        require('lspconfig')[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-        }
-      end,
-    }
-  end
+    -- Activate the servers manually
+    local lspconfig = require("lspconfig")
+    for _, server in pairs(servers) do
+      local opts = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
+
+      local require_ok, settings = pcall(require, "plugins.lsp.settings." .. server)
+      if require_ok then
+        opts = vim.tbl_deep_extend("force", settings, opts)
+      end
+
+      if server == "lua_ls" then
+        require("neodev").setup {}
+      end
+      lspconfig[server].setup(opts)
+    end
+
+end
 }
