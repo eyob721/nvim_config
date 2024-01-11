@@ -25,8 +25,9 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Lazy
+-- Lazy and Mason
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Mason" })
 
 -- Window Management
 map("n", "<leader>|", ":vsplit<CR>", { silent = true, desc = "Split window vertically" })
@@ -34,13 +35,12 @@ map("n", "<leader>-", ":split<CR>", { silent = true, desc = "Split window horizo
 
 -- Telescope keymaps
 local builtin = require('telescope.builtin')
-map('n', '<leader>ff', builtin.find_files, {desc = "Find files"})
-map('n', '<leader>fg', builtin.live_grep, {desc = "Grep files"})
-map('n', '<leader>fb', builtin.buffers, {desc = "Find buffers" })
-map('n', '<leader>fh', builtin.help_tags, {desc = "Find help tags"})
-map('n', '<leader>fk', builtin.keymaps, {desc = "Find keymaps"})
+map('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+map('n', '<leader>fg', builtin.live_grep, { desc = "Grep files" })
+map('n', '<leader>fb', builtin.buffers, { desc = "Find buffers" })
 
---[[ Toggle Options ]] -------------------------------------------------------
+--[[ Toggle Options ]]
+                       -------------------------------------------------------
 -- Load toggle functions from utils
 local toggle = require('utils.toggle')
 
@@ -53,3 +53,7 @@ map('n', '<leader>ub', toggle.git_blame, { desc = 'Toggle Git line blame' })
 
 -- Indent scope
 map('n', '<leader>ui', toggle.indent_scope, { desc = 'Toggle indent scope' })
+
+-- Search keymaps
+map('n', '<leader>sh', builtin.help_tags, { desc = "Search help tags" })
+map('n', '<leader>sk', builtin.keymaps, { desc = "Search keymaps" })

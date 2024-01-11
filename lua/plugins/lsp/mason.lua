@@ -2,7 +2,6 @@ return {
 
   "williamboman/mason.nvim",
   cmd = "Mason",
-  keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
   build = ":MasonUpdate",
   opts = {
     ui = {
@@ -26,6 +25,7 @@ return {
     },
   },
   config = function(_, opts)
+    -- NOTE: Mason installing packages
     require("mason").setup(opts)
     local mr = require("mason-registry")
     mr:on("package:install:success", function()
@@ -37,6 +37,7 @@ return {
         })
       end, 100)
     end)
+
     local function ensure_installed()
       for _, tool in ipairs(opts.ensure_installed) do
         local p = mr.get_package(tool)
@@ -45,6 +46,7 @@ return {
         end
       end
     end
+
     if mr.refresh then
       mr.refresh(ensure_installed)
     else

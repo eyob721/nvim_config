@@ -32,7 +32,7 @@ return {
       },
     }
   },
-  -- This is a good example on toggling options
+  -- NOTE: I left this here as a template for toggling options
   keys = {
     {
       "<leader>up",
