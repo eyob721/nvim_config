@@ -15,6 +15,7 @@ opt.smartindent = true -- automatic indenting
 opt.number = true -- Show line numbers
 opt.relativenumber = true -- Show relative line numbers
 opt.list = true -- Show some invisible characters (tabs...
+---@diagnostic disable-next-line: assign-type-mismatch
 opt.listchars = "tab:➛ ,trail:·" -- or "tab:»\ ,trail:·"
 opt.showmode = true -- Dont show mode since we have a statusline
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
