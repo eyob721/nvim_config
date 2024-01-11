@@ -39,6 +39,7 @@ class Base:
 
         """
         import json
+
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
@@ -55,6 +56,7 @@ class Base:
 
         """
         import json
+
         if json_string is None or len(json_string) == 0:
             return []
         return json.loads(json_string)
@@ -74,7 +76,7 @@ class Base:
             list_dictionaries = []
         with open(file_name, "w", encoding="utf-8") as file:
             json_string = cls.to_json_string(list_dictionaries)
-            file.write(json_string + '\n')
+            file.write(json_string + "\n")
 
     @classmethod
     def load_from_file(cls):
@@ -82,7 +84,7 @@ class Base:
         file_name = cls.__name__ + ".json"
         try:
             with open(file_name, "r", encoding="utf-8") as file:
-                list_dicts = cls.from_json_string(file.read().rstrip('\n'))
+                list_dicts = cls.from_json_string(file.read().rstrip("\n"))
         except FileNotFoundError:
             list_dicts = []
         return [cls.create(**d) for d in list_dicts]
@@ -113,15 +115,15 @@ class Base:
             list_dictionaries = []
         with open(file_name, "w", encoding="utf-8") as file:
             for d in list_dictionaries:
-                id = d['id']
-                x = d['x']
-                y = d['y']
+                id = d["id"]
+                x = d["x"]
+                y = d["y"]
                 if cls.__name__ == "Rectangle":
-                    width = d['width']
-                    height = d['height']
+                    width = d["width"]
+                    height = d["height"]
                     csv_fmt = f"{id},{width},{height},{x},{y}\n"
                 else:
-                    size = d['size']
+                    size = d["size"]
                     csv_fmt = f"{id},{size},{x},{y}\n"
                 file.write(csv_fmt)
 
@@ -136,13 +138,14 @@ class Base:
             file_lines = []
         list_dictionaries = []
         for line in file_lines:
-            obj_values = line.split(',')
+            obj_values = line.split(",")
             if cls.__name__ == "Rectangle":
-                obj_keys = ['id', 'width', 'height', 'x', 'y']
+                obj_keys = ["id", "width", "height", "x", "y"]
             else:
-                obj_keys = ['id', 'size', 'x', 'y']
-            obj_dict = {obj_keys[i]: int(obj_values[i])
-                        for i in range(len(obj_keys))}
+                obj_keys = ["id", "size", "x", "y"]
+            obj_dict = {
+                obj_keys[i]: int(obj_values[i]) for i in range(len(obj_keys))
+            }
             list_dictionaries.append(obj_dict)
         return [cls.create(**d) for d in list_dictionaries]
 
@@ -173,8 +176,8 @@ class Base:
         papi.write("Rectangles: \n", font=("Arial", 20, "bold"))
         max_height = 0
         for rec in list_rectangles:
-            width = getattr(rec, 'width')
-            height = getattr(rec, 'height')
+            width = getattr(rec, "width")
+            height = getattr(rec, "height")
             for i in range(2):
                 papi.forward(width)
                 papi.right(90)
@@ -196,7 +199,7 @@ class Base:
         papi.write("Squares: \n", font=("Arial", 20, "bold"))
 
         for sqr in list_squares:
-            size = getattr(sqr, 'size')
+            size = getattr(sqr, "size")
             for i in range(4):
                 papi.forward(size)
                 papi.right(90)

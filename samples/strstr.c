@@ -12,6 +12,7 @@
 char *_strstr(char *haystack, char *needle)
 {
 	char *h = haystack, *n = needle;
+	int i;
 
 	if (haystack != NULL && needle != NULL)
 	{
