@@ -3,19 +3,20 @@ return {
   opts = {
     ensure_installed = {
       -- Linters
-      "shellcheck", -- Bash Linter
-      "markdownlint", -- Markdown Linter
-      "eslint-lsp", --TypeScript & JavaScript Linter
+      "eslint-lsp", --TypeScript & JavaScript
+      "markdownlint", -- Markdown
+      "shellcheck", -- Bash
 
       -- Formatters
-      "shfmt", -- Bash Formatter
-      "clang-format", -- C and C++ Formatter
-      "pydocstyle", -- Python Formatter for doctrings
-      "isort", -- Python Formatter for import statements
-      "black", -- Python Formatter
-      "prettier", -- Formatter for HTML, CSS, JS, Markdown, ... etc.
-      "stylua", -- Lua Formatter
-      "sql-formatter", -- SQL Formatter
+      "black", -- Python
+      "isort", -- Python imports
+      "pydocstyle", -- Python docstrings
+      "clang-format", -- C and C++
+      "prettier", -- HTML, CSS, and JS
+      "mdformat", -- Markdown
+      "shfmt", -- Bash
+      "sql-formatter", -- SQL
+      "stylua", -- Lua
     },
   },
 }
