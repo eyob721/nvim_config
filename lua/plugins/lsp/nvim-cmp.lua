@@ -3,7 +3,7 @@
 Auto completion
 ==============================================================================
 
-nvim-cmp: a completion plugin for neovim coded in Lua. 
+nvim-cmp: a completion plugin for neovim coded in Lua.
 
 NOTE: when adding sources
         1. first include the source plugin repo in the `dependencies` key
@@ -65,8 +65,6 @@ return {
     -- Highlight for ghost texts
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
-    local defaults = require("cmp.config.default")()
-
     return {
       -- Completion menu behavior
       completion = {
@@ -98,6 +96,7 @@ return {
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ---@diagnostic disable-next-line: missing-parameter
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -106,7 +105,7 @@ return {
           -- Accept currently selected item.
           -- Set `select` to `false` to only confirm explicitly selected items.
           select = false,
-        }), 
+        }),
         ["<C-CR>"] = function(fallback)
           cmp.abort()
           fallback()
@@ -117,7 +116,7 @@ return {
           if cmp.visible() then
             cmp.select_next_item()
             -- You could replace the expand_or_jumpable() calls with
-            -- expand_or_locally_jumpable() 
+            -- expand_or_locally_jumpable()
             -- that way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
@@ -138,16 +137,16 @@ return {
 
       -- My formatting
       formatting = {
-        -- fields = { "kind", "abbr", "menu" },
+        fields = { "kind", "abbr", "menu" },
         format = function(entry, item)
           -- Kind icons
           item.kind = string.format("%s", kind_icons[item.kind])
           item.menu = ({
             nvim_lsp = "[LSP]",
             luasnip = "[Snippet]",
+            nvim_lua = "[Lua]",
             buffer = "[Buffer]",
             path = "[Path]",
-            nvim_lua = "[Lua]",
           })[entry.source.name]
           return item
         end,
@@ -168,10 +167,10 @@ return {
     }
   end,
 
-  config = function(_, opts)
-    for _, source in ipairs(opts.sources) do
-      source.group_index = source.group_index or 1
-    end
-    require("cmp").setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   for _, source in ipairs(opts.sources) do
+  --     source.group_index = source.group_index or 1
+  --   end
+  --   require("cmp").setup(opts)
+  -- end,
 }
