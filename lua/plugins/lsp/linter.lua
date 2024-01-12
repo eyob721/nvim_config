@@ -6,9 +6,7 @@ return {
     linters_by_ft = {
       -- shellcheck is not needed here, mason handles it
       -- sh = { "shellcheck" },
-      -- TODO: Add linter for C files
 
-      c = { "betty" }, -- not a good linter
       python = { "pycodestyle" },
       markdown = { "markdownlint" },
       javascript = { "eslint" },
@@ -32,7 +30,6 @@ return {
         args = {
           "--disable MD013",
         },
-        betty = {},
       },
     },
   },
