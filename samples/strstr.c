@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * _strstr - finds the first occurrence of the substring needle
@@ -16,6 +17,7 @@ char *_strstr(char *haystack, char *needle)
 
 	if (haystack != NULL && needle != NULL)
 	{
+		dprintf(STDOUT_FILENO, "Hello World");
 		/* If `needle` is empty, return haystack */
 		if (*needle == '\0')
 			return (haystack);
