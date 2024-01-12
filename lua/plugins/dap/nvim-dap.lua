@@ -1,3 +1,20 @@
+--[[
+=================================================================================
+Neovim Debugger: nvim-dap
+=================================================================================
+To add a debug adapter:
+  - Add the debug adapter to the ensure installed table of
+    mason-nvim-dap config
+      - You can find supported adapters list from
+        https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+  - After that add the adapter configurations in nvim-dap config function
+      - 2 tables are required for each adapter
+          -> adapter: https://github.com/jay-babu/mason-nvim-dap.nvim/tree/main/lua/mason-nvim-dap/mappings/adapters
+          -> configuration: https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/configurations.lua
+      - NOTE: when setting configuration use the filetype name, not the adapter name
+              use the configs below as an example
+--]]
+
 ---@diagnostic disable: redundant-parameter
 return {
   "mfussenegger/nvim-dap",
