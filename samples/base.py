@@ -70,7 +70,7 @@ class Base:
 
         """
         file_name = cls.__name__ + ".json"
-        if type(list_objs) is list:
+        if type(list_objs) is list:  # noqa: E721
             list_dictionaries = [obj.to_dictionary() for obj in list_objs]
         else:
             list_dictionaries = []
@@ -109,7 +109,7 @@ class Base:
 
         """
         file_name = cls.__name__ + ".csv"
-        if type(list_objs) is list:
+        if type(list_objs) is list:  # noqa: E721
             list_dictionaries = [obj.to_dictionary() for obj in list_objs]
         else:
             list_dictionaries = []
@@ -208,3 +208,9 @@ class Base:
             papi.pendown()
 
         turtle.done()
+
+
+if __name__ == "__main__":
+    x = "This is an amazing editor"
+    y = (x + "\n") * 3
+    print(y)

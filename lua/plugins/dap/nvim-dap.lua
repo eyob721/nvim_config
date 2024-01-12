@@ -15,6 +15,7 @@ return {
 
     local dap = require("dap")
 
+    -- [[ C and C++ ]] --
     dap.adapters.cppdbg = {
       id = "cppdbg",
       type = "executable",
@@ -46,5 +47,31 @@ return {
       },
     }
     dap.configurations.c = dap.configurations.cpp
+
+    -- [[ Python ]] --
+    dap.adapters.python = {
+      type = "executable",
+      command = vim.fn.exepath("debugpy-adapter"),
+    }
+
+    local venv_path = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+    dap.configurations.python = {
+      {
+        -- The first three options are required by nvim-dap
+        name = "Python: Launch file",
+        type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+        request = "launch",
+        cwd = "${workspaceFolder}",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        -- program = "${file}", -- This configuration will launch the current file if used.
+        -- venv on Windows uses Scripts instead of bin
+        pythonPath = venv_path
+            and ((vim.fn.has("win32") == 1 and venv_path .. "/Scripts/python") or venv_path .. "/bin/python")
+          or nil,
+        console = "integratedTerminal",
+      },
+    }
   end,
 }
