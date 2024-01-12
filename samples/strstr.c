@@ -13,7 +13,6 @@
 char *_strstr(char *haystack, char *needle)
 {
 	char *h = haystack, *n = needle;
-	int i;
 
 	if (haystack != NULL && needle != NULL)
 	{
@@ -37,4 +36,20 @@ char *_strstr(char *haystack, char *needle)
 		}
 	}
 	return (NULL);
+}
+
+/**
+ * main - test program for _strstr function
+ *
+ * Return: 0 on success or 1 on failure
+ */
+int main(void)
+{
+	char *str = "Hi world, this editor is amazing!!!";
+	char *key = "amazing";
+
+	printf("str: %s\n", str);
+	printf("key: %s\n", key);
+	printf("Result: %s\n", _strstr(str, key));
+	return (EXIT_SUCCESS);
 }
