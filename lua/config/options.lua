@@ -11,3 +11,7 @@ opt.softtabstop = 4 -- Number of spaces that a <Tab> counts for while performing
 opt.expandtab = true -- Expand tabs to spaces
 opt.shiftround = true -- Rounds indent to multiple of `shiftwidth`, applies to > and <
 opt.smartindent = true -- automatic indenting
+
+-- [[ Formatting ]]
+opt.textwidth = 79
+opt.colorcolumn = "+1"
