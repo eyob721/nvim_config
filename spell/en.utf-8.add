@@ -32,3 +32,6 @@ neovim
 LSP
 LazyVim
 papi721
+config
+scrollback
+tmux
