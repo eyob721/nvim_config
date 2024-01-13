@@ -18,3 +18,4 @@ opt.colorcolumn = "+1"
 
 -- [[ Folding ]]
 opt.foldmethod = "marker" -- use zf to create a fold-marker
+opt.foldclose = "all" -- a fold is closed when a cursor isn't in it

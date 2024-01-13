@@ -32,7 +32,8 @@ return {
 
     local dap = require("dap")
 
-    -- [[ C and C++ ]] --
+    -- [[ C and C++ ]] ----------------------------------------------------{{{
+
     dap.adapters.cppdbg = {
       id = "cppdbg",
       type = "executable",
@@ -64,8 +65,10 @@ return {
       },
     }
     dap.configurations.c = dap.configurations.cpp
+    -- }}}
 
-    -- [[ Python ]] --
+    -- [[ Python ]] -------------------------------------------------------{{{
+
     dap.adapters.python = {
       type = "executable",
       command = vim.fn.exepath("debugpy-adapter"),
@@ -90,5 +93,6 @@ return {
         console = "integratedTerminal",
       },
     }
+    -- }}}
   end,
 }
