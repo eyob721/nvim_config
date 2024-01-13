@@ -15,3 +15,6 @@ opt.smartindent = true -- automatic indenting
 -- [[ Formatting ]]
 opt.textwidth = 79
 opt.colorcolumn = "+1"
+
+-- [[ Folding ]]
+opt.foldmethod = "marker" -- use zf to create a fold-marker
