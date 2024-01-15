@@ -36,3 +36,11 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --     vim.cmd("write")
 --   end,
 -- })
+
+-- For closeing all folds when exiting a buffer
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufDelete" }, {
+  group = augroup("folds_autoclose"),
+  callback = function()
+    vim.cmd.normal("zM") -- zM closes all folds
+  end,
+})
