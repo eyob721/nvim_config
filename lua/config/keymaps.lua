@@ -3,7 +3,13 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local del = vim.keymap.del
+
 local toggle = require("utils.toggle")
 
--- Git signs
+-- Toggle Git blame
 map("n", "<leader>ub", toggle.git_blame, { desc = "Toggle Git line blame" })
+
+-- Toggle Colorizer
+del("n", "<leader>uC")
+map("n", "<leader>uC", ":ColorizerToggle<CR>", { desc = "Toggle Colorizer" })
