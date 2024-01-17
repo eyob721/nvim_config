@@ -44,3 +44,12 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --     vim.cmd.normal("zM") -- zM closes all folds
 --   end,
 -- })
+
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+  group = augroup("new_python_file"),
+  pattern = { "*.py" },
+  callback = function()
+    vim.cmd("norm i #!/usr/bin/python3")
+    vim.cmd("norm o")
+  end,
+})
